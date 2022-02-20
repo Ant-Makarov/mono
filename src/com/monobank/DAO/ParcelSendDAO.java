@@ -1,6 +1,6 @@
-package com.monobank.DAO;
+package DAO;
 
-import com.monobank.entities.ParcelSend;
+import entities.ParcelSend;
 import java.util.List;
 
 public interface ParcelSendDAO {

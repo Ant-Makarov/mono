@@ -1,9 +1,9 @@
-package com.monobank.Services;
+package Services;
 
-import com.monobank.DAO.PostOfficeDAO;
-import com.monobank.Util.DataBaseConnector;
-import com.monobank.entities.PostOffice;
-import com.monobank.entities.User;
+import DAO.PostOfficeDAO;
+import Util.DataBaseConnector;
+import entities.PostOffice;
+import entities.User;
 
 import java.sql.*;
 import java.util.ArrayList;

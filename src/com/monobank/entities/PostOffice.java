@@ -1,4 +1,4 @@
-package com.monobank.entities;
+package entities;
 
 public class PostOffice {
 

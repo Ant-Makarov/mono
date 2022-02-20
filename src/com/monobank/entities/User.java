@@ -1,6 +1,4 @@
-package com.monobank.entities;
-
-import java.util.Objects;
+package entities;
 
 public class User {
 
@@ -50,16 +48,4 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(userID, user.userID) && Objects.equals(fullName, user.fullName) && Objects.equals(email, user.email) && Objects.equals(phoneNumber, user.phoneNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userID, fullName, email, phoneNumber);
-    }
 }

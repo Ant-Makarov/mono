@@ -1,4 +1,4 @@
-package com.monobank.entities;
+package entities;
 
 import java.util.Random;
 import java.util.Timer;

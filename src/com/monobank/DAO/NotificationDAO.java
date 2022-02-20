@@ -1,6 +1,6 @@
-package com.monobank.DAO;
+package DAO;
 
-import com.monobank.entities.Notification;
+import entities.Notification;
 import java.util.List;
 
 public interface NotificationDAO {

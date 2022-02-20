@@ -1,10 +1,10 @@
-package com.monobank.Util;
+package Util;
 
 
-import com.monobank.Services.PostOfficeService;
-import com.monobank.Services.SendParcelService;
-import com.monobank.Services.UserService;
-import com.monobank.entities.*;
+import Services.PostOfficeService;
+import Services.SendParcelService;
+import Services.UserService;
+import entities.*;
 
 import java.util.List;
 
@@ -38,7 +38,6 @@ public class CommandHandler {
                 throw new IllegalArgumentException();
             }
         }
-        return entity;
     }
 
 }

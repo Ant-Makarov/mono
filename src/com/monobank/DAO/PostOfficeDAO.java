@@ -1,6 +1,6 @@
-package com.monobank.DAO;
+package DAO;
 
-import com.monobank.entities.PostOffice;
+import entities.PostOffice;
 import java.util.List;
 
 public interface PostOfficeDAO {

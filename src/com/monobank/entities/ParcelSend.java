@@ -1,4 +1,4 @@
-package com.monobank.entities;
+package entities;
 
 import java.sql.Timestamp;
 import java.sql.Date;
@@ -20,7 +20,7 @@ public class ParcelSend {
     private String receiverPhoneNumber;
     private String receiverFullName;
     private String sendStatus;
-    private  creationDate;
+    private  Date creationDate;
     private Timestamp changeDate;
 
     public ParcelSend(Long parcelSendID, Long senderID, Long senderPostOffice, Long receiverPostOffice,

@@ -1,8 +1,8 @@
-package com.monobank.Services;
+package Services;
 
-import com.monobank.DAO.ParcelSendDAO;
-import com.monobank.Util.DataBaseConnector;
-import com.monobank.entities.ParcelSend;
+import DAO.ParcelSendDAO;
+import Util.DataBaseConnector;
+import entities.ParcelSend;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,9 +1,9 @@
-package com.monobank.Services;
+package Services;
 
-import com.monobank.DAO.NotificationDAO;
-import com.monobank.Util.DataBaseConnector;
-import com.monobank.entities.Notification;
-import com.monobank.entities.PostOffice;
+import DAO.NotificationDAO;
+import Util.DataBaseConnector;
+import entities.Notification;
+import entities.PostOffice;
 
 import java.sql.*;
 import java.util.ArrayList;

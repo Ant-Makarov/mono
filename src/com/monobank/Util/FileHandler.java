@@ -1,4 +1,4 @@
-package com.monobank.Util;
+package Util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

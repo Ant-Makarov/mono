@@ -1,9 +1,8 @@
-package com.monobank;
 
 import java.util.List;
 
-import com.monobank.Util.CommandHandler;
-import com.monobank.Util.FileHandler;
+import Util.CommandHandler;
+import Util.FileHandler;
 
 public class Application {
 

@@ -1,8 +1,8 @@
-package com.monobank.Services;
+package Services;
 
-import com.monobank.DAO.UserDAO;
-import com.monobank.Util.DataBaseConnector;
-import com.monobank.entities.User;
+import DAO.UserDAO;
+import Util.DataBaseConnector;
+import entities.User;
 
 import java.sql.*;
 import java.util.ArrayList;

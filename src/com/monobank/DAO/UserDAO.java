@@ -1,6 +1,6 @@
-package com.monobank.DAO;
+package DAO;
 
-import com.monobank.entities.User;
+import entities.User;
 import java.util.List;
 
 public interface UserDAO {
