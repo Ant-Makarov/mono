@@ -35,7 +35,7 @@ public class FileHandler {
     }
 
     public static void outputWriter(String str) {
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(OUTPUT))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(OUTPUT, true))) {
             bufferedWriter.write(str);
             bufferedWriter.newLine();
         } catch (IOException e) {

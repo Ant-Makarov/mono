@@ -1,6 +1,8 @@
 package entities;
 
 import java.sql.Timestamp;
+import java.util.Random;
+import java.util.Timer;
 
 public class ParcelSend {
 
@@ -84,6 +86,22 @@ public class ParcelSend {
         this.sendStatus = sendStatus;
     }
 
+    public void setSendStatus() {
+        ParcelSend.Scheduler scheduler = new ParcelSend.Scheduler();
+        try {
+            for (int i = 0; i < 5; i++) {
+                Thread.currentThread().sleep(1000);
+                scheduler.setDecision();
+            }
+            if (scheduler.getDecision()) {
+                this.sendStatus = "Delivered";
+            } else {
+                this.sendStatus = "Expired";
+            }
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     public Timestamp getCreationDate() {
         return creationDate;
     }
@@ -98,5 +116,23 @@ public class ParcelSend {
 
     public void setChangeDate(Timestamp changeDate) {
         this.changeDate = changeDate;
+    }
+
+    public static class Scheduler {
+        private Boolean decision = false;
+
+        private boolean setDecision() {
+            int a = 1;
+            int b = 6;
+            int result = a + (int) (Math.random() * b);
+            if (result == 1) {
+                decision = true;
+            }
+            return decision;
+        }
+
+        public Boolean getDecision() {
+            return decision;
+        }
     }
 }

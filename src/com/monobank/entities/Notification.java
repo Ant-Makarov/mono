@@ -3,15 +3,14 @@ package entities;
 public class Notification {
 
     private Long sendID;
-    private String text;
     private String status;
+    private String text;
 
     public Notification() {}
 
-    public Notification(Long sendID, String text, String status) {
+    public Notification(Long sendID) {
         this.sendID = sendID;
-        this.text = text;
-        this.status = status;
+        this.status = "New";
     }
 
     public Long getSendID() {
