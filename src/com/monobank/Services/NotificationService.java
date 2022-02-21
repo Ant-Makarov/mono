@@ -74,7 +74,7 @@ public class NotificationService extends DataBaseConnector implements Notificati
 
     @Override
     public void update(Notification notification) {
-        query = "update notifications set text = ?, status = ?, where id = ?";
+        query = "update notifications set message = ?, status = ? where sendID = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -91,7 +91,7 @@ public class NotificationService extends DataBaseConnector implements Notificati
 
     @Override
     public void remove(Notification notification) {
-        query = "delete from notifications where id = ?";
+        query = "delete from notifications where sendID = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

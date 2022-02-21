@@ -54,11 +54,12 @@ public class CommandHandler {
         String receiverFullName = el[6];
         ParcelSend parcelSend = new ParcelSend(parcelSendID,senderID,senderPostOfficeID,receiverPostOfficeID,
                 receiverPhoneNumber, receiverFullName);
+        sendParcelService.add(parcelSend);
         Notification notification = notificationCreating(parcelSend);
         parcelSend.setSendStatus();
         parcelSend.setChangeDate(new Timestamp(System.currentTimeMillis()));
         notificationUpdating(notification, parcelSend);
-        sendParcelService.add(parcelSend);
+        sendParcelService.update(parcelSend);
     }
 
     public static Notification notificationCreating(ParcelSend parcelSend) {
@@ -68,7 +69,7 @@ public class CommandHandler {
         return notification;
     }
 
-    public static void notificationUpdating(Notification notification,ParcelSend parcelSend) {
+    public static synchronized void notificationUpdating(Notification notification,ParcelSend parcelSend) {
         if (parcelSend.getSendStatus().equals("Delivered")) {
             notification.setText("Your parcel has been succesfully delivered!");
         } else {
