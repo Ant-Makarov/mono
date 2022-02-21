@@ -88,20 +88,21 @@ public class SendParcelService extends DataBaseConnector implements ParcelSendDA
     @Override
     public void update(ParcelSend parcelSend) {
         query = "update parcel_sendings set senderID = ?, sender_PO_ID = ?, receiver_PO_ID = ?," +
-                "receiver_FIO = ?, receiverPhone = ?, status = ?, creation_dateTime = ?," +
-                "statusChange_dateTime = ? where sendID = ?";
+                " receiver_FIO = ?, receiverPhone = ?, status = ?, creation_dateTime = ?," +
+                " statusChange_dateTime = ? where sendID = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setLong(1, parcelSend.getSenderID());
             preparedStatement.setLong(2, parcelSend.getSenderPostOffice());
             preparedStatement.setLong(3, parcelSend.getReceiverPostOffice());
-            preparedStatement.setString(4, parcelSend.getReceiverPhoneNumber());
-            preparedStatement.setString(5, parcelSend.getReceiverFullName());
+            preparedStatement.setString(4, parcelSend.getReceiverFullName());
+            preparedStatement.setString(5, parcelSend.getReceiverPhoneNumber());
             preparedStatement.setString(6, parcelSend.getSendStatus());
             preparedStatement.setTimestamp(7, parcelSend.getCreationDate());
             preparedStatement.setTimestamp(8, parcelSend.getChangeDate());
             preparedStatement.setLong(9, parcelSend.getParcelSendID());
+            preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -109,7 +110,7 @@ public class SendParcelService extends DataBaseConnector implements ParcelSendDA
 
     @Override
     public void remove(ParcelSend parcelSend) {
-        query = "delete from post_offices where id = ?";
+        query = "delete from parcel_sendings where sendID = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
