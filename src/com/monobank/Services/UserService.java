@@ -18,7 +18,6 @@ public class UserService extends DataBaseConnector implements UserDAO {
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
             preparedStatement.setLong(1, user.getUserID());
             preparedStatement.setString(2, user.getFullName());
             preparedStatement.setString(3, user.getEmail());

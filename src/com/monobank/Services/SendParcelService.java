@@ -24,8 +24,8 @@ public class SendParcelService extends DataBaseConnector implements ParcelSendDA
             preparedStatement.setLong(2, parcelSend.getSenderID());
             preparedStatement.setLong(3, parcelSend.getSenderPostOffice());
             preparedStatement.setLong(4, parcelSend.getReceiverPostOffice());
-            preparedStatement.setString(5, parcelSend.getReceiverPhoneNumber());
-            preparedStatement.setString(6, parcelSend.getReceiverFullName());
+            preparedStatement.setString(5, parcelSend.getReceiverFullName());
+            preparedStatement.setString(6, parcelSend.getReceiverPhoneNumber());
             preparedStatement.setString(7, parcelSend.getSendStatus());
             preparedStatement.setTimestamp(8, parcelSend.getCreationDate());
             preparedStatement.setTimestamp(9, parcelSend.getChangeDate());

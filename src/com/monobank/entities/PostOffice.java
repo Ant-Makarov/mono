@@ -7,7 +7,7 @@ public class PostOffice {
 
     public PostOffice() {}
     public PostOffice(Long postOfficeID, String description) {
-        postOfficeID = postOfficeID;
+        this.postOfficeID = postOfficeID;
         this.description = description;
     }
 
