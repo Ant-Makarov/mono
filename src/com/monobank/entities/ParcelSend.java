@@ -1,18 +1,9 @@
 package entities;
 
 import java.sql.Timestamp;
-import java.sql.Date;
 
 public class ParcelSend {
-    //    a. Идентификатор
-//    b. Пользователь (отправитель)
-//    c. Отделение получателя(из справочника)
-//    d. Отделение получателя(из справочника)
-//    e. Телефон получателя
-//    f. ФИО получателя
-//    g. Статус(Новый, Доставлена, Просрочена)
-//    h. Дата+время создания
-//    i. Дата+время изменения статуса
+
     private Long parcelSendID;
     private Long senderID;
     private Long senderPostOffice;
@@ -20,8 +11,10 @@ public class ParcelSend {
     private String receiverPhoneNumber;
     private String receiverFullName;
     private String sendStatus;
-    private  Date creationDate;
+    private Timestamp creationDate;
     private Timestamp changeDate;
+
+    public ParcelSend() {}
 
     public ParcelSend(Long parcelSendID, Long senderID, Long senderPostOffice, Long receiverPostOffice,
                       String receiverPhoneNumber, String receiverFullName) {
@@ -32,7 +25,7 @@ public class ParcelSend {
         this.receiverPhoneNumber = receiverPhoneNumber;
         this.receiverFullName = receiverFullName;
         sendStatus = "NEW";
-        creationDate = new Timestamp(new Date().getTime());
+        creationDate = new Timestamp(System.currentTimeMillis());
     }
 
     public Long getParcelSendID() {
@@ -47,7 +40,7 @@ public class ParcelSend {
         return senderID;
     }
 
-    public void setSender(Long senderID) {
+    public void setSenderID(Long senderID) {
         this.senderID = senderID;
     }
 
@@ -91,7 +84,7 @@ public class ParcelSend {
         this.sendStatus = sendStatus;
     }
 
-    public Date getCreationDate() {
+    public Timestamp getCreationDate() {
         return creationDate;
     }
 
@@ -99,7 +92,7 @@ public class ParcelSend {
         this.creationDate = creationDate;
     }
 
-    public Date getChangeDate() {
+    public Timestamp getChangeDate() {
         return changeDate;
     }
 

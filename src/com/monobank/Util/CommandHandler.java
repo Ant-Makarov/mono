@@ -20,9 +20,11 @@ public class CommandHandler {
             if (s.equals(REGISTRATION)) {
                UserService userService = new UserService();
                userService.add(new User(Long.parseLong(el[1]),el[2],el[3],el[4]));
+               FileHandler.outputWriter("The new user has been succesfully registrated and added to database!");
             } else if(s.equals(CREATE_POST_OFFICE)) {
                 PostOfficeService postOfficeService = new PostOfficeService();
                 postOfficeService.add(new PostOffice(Long.parseLong(el[1]),el[2]));
+                FileHandler.outputWriter("The new post office has been succesfully created and added to database!");
             } else if(s.equals(CREATE_PARCEL_SEND)) {
                 SendParcelService sendParcelService = new SendParcelService();
                 Long parcelSendID = Long.parseLong(el[1]);
@@ -34,6 +36,7 @@ public class CommandHandler {
                 ParcelSend parcelSend = new ParcelSend(parcelSendID,senderID,senderPostOfficeID,receiverPostOfficeID,
                         receiverPhoneNumber, receiverFullName);
                 sendParcelService.add(parcelSend);
+                FileHandler.outputWriter("The new parcel send has been succesfully created and added to database!");
             } else {
                 throw new IllegalArgumentException();
             }

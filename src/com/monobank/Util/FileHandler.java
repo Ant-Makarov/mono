@@ -1,17 +1,18 @@
 package Util;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileHandler {
 
-    public static List<String> inputReader(String fileName) {
+    private static final String INPUT = "C:\\Users\\Антон\\monoPostService\\src\\com\\monobank\\input.txt";
+    private final static String OUTPUT = "C:\\Users\\Антон\\monoPostService\\src\\com\\monobank\\output.txt";
+
+    public static List<String> inputReader() {
         String str;
         List<String> listOfStrings = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(INPUT))) {
             while (reader.ready()) {
                 str = reader.readLine();
                 listOfStrings.add(str);
@@ -33,7 +34,13 @@ public class FileHandler {
         return listOfParsedStrings;
     }
 
-    public static void outputWriter() {
-
+    public static void outputWriter(String str) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(OUTPUT))) {
+            bufferedWriter.write(str);
+            bufferedWriter.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
+

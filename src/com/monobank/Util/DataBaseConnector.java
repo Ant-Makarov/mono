@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class DataBaseConnector {
 
     private static final String DB_DRIVER = "org.postgresql.Driver";
-    private static final String DB_URL = "";
-    private static final String DB_USERNAME = "";
-    private static final String DB_PASSWORD = "";
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/mono";
+    private static final String DB_USERNAME = "postgres";
+    private static final String DB_PASSWORD = "password";
     private static Connection connection;
 
     public Connection getConnection() {
