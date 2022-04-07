@@ -15,7 +15,7 @@ public class SendParcelService extends DataBaseConnector implements ParcelSendDA
 
     @Override
     public void add(ParcelSend parcelSend) {
-        query = "insert into parcel_sendings values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        query = "insert into mono.parcel_sendings values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -38,7 +38,7 @@ public class SendParcelService extends DataBaseConnector implements ParcelSendDA
     @Override
     public List<ParcelSend> getAll() {
         List<ParcelSend> parcelSendList = new ArrayList<>();
-        query = "select * from parcel_sendings";
+        query = "select * from mono.parcel_sendings";
 
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement();
@@ -64,7 +64,7 @@ public class SendParcelService extends DataBaseConnector implements ParcelSendDA
 
     @Override
     public ParcelSend getById(Long sendId) {
-        query = "select * from parcel_sendings where sendID = ?";
+        query = "select * from mono.parcel_sendings where sendID = ?";
         ParcelSend parcelSend = new ParcelSend();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -87,7 +87,7 @@ public class SendParcelService extends DataBaseConnector implements ParcelSendDA
 
     @Override
     public void update(ParcelSend parcelSend) {
-        query = "update parcel_sendings set senderID = ?, sender_PO_ID = ?, receiver_PO_ID = ?," +
+        query = "update mono.parcel_sendings set senderID = ?, sender_PO_ID = ?, receiver_PO_ID = ?," +
                 " receiver_FIO = ?, receiverPhone = ?, status = ?, creation_dateTime = ?," +
                 " statusChange_dateTime = ? where sendID = ?";
 
@@ -110,7 +110,7 @@ public class SendParcelService extends DataBaseConnector implements ParcelSendDA
 
     @Override
     public void remove(ParcelSend parcelSend) {
-        query = "delete from parcel_sendings where sendID = ?";
+        query = "delete from mono.parcel_sendings where sendID = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

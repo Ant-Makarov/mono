@@ -3,8 +3,6 @@ package Services;
 import DAO.NotificationDAO;
 import Util.DataBaseConnector;
 import entities.Notification;
-import entities.PostOffice;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +12,9 @@ public class NotificationService extends DataBaseConnector implements Notificati
     private static String query;
 
     @Override
-    public void add(Notification notification) {
+    public synchronized void add(Notification notification) {
 
-        query = "insert into notifications values (?, ?, ?)";
+        query = "insert into mono.notifications values (?, ?, ?)";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -31,9 +29,9 @@ public class NotificationService extends DataBaseConnector implements Notificati
     }
 
     @Override
-    public List<Notification> getAll() {
+    public synchronized List<Notification> getAll() {
         List<Notification> notificationsList = new ArrayList<>();
-        query = "select * from notifications";
+        query = "select * from mono.notifications";
 
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement();
@@ -42,7 +40,7 @@ public class NotificationService extends DataBaseConnector implements Notificati
             while (resultSet.next()) {
                 Notification notification = new Notification();
                 notification.setSendID(resultSet.getLong("sendID"));
-                notification.setStatus(resultSet.getString("message"));
+                notification.setText(resultSet.getString("message"));
                 notification.setStatus(resultSet.getString("status"));
                 notificationsList.add(notification);
             }
@@ -54,8 +52,8 @@ public class NotificationService extends DataBaseConnector implements Notificati
     }
 
     @Override
-    public Notification getById(Long sendId) {
-        query = "select * from notifications where sendID = ?";
+    public synchronized Notification getById(Long sendId) {
+        query = "select * from mono.notifications where sendID = ?";
         Notification notification = new Notification();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -73,8 +71,8 @@ public class NotificationService extends DataBaseConnector implements Notificati
     }
 
     @Override
-    public void update(Notification notification) {
-        query = "update notifications set message = ?, status = ? where sendID = ?";
+    public synchronized void update(Notification notification) {
+        query = "update mono.notifications set message = ?, status = ? where sendID = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -90,8 +88,8 @@ public class NotificationService extends DataBaseConnector implements Notificati
     }
 
     @Override
-    public void remove(Notification notification) {
-        query = "delete from notifications where sendID = ?";
+    public synchronized void remove(Notification notification) {
+        query = "delete from mono.notifications where sendID = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

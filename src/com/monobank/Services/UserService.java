@@ -14,7 +14,7 @@ public class UserService extends DataBaseConnector implements UserDAO {
 
     @Override
     public void add(User user) {
-        query = "insert into users values(?, ?, ?, ?)";
+        query = "insert into mono.users values(?, ?, ?, ?)";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -31,7 +31,7 @@ public class UserService extends DataBaseConnector implements UserDAO {
     @Override
     public List<User> getAll() {
         List<User> usersList = new ArrayList<>();
-        query = "select * from users";
+        query = "select * from mono.users";
 
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement();
@@ -54,7 +54,7 @@ public class UserService extends DataBaseConnector implements UserDAO {
 
     @Override
     public User getByID(Long userID) {
-        query = "select * from users where id = ?";
+        query = "select * from mono.users where id = ?";
         User user = new User();
 
         try (Connection connection = getConnection();
@@ -76,7 +76,7 @@ public class UserService extends DataBaseConnector implements UserDAO {
 
     @Override
     public void update(User user) {
-        query = "update users set fullName = ?, email = ?, phoneNumber = ? where id = ?";
+        query = "update mono.users set fullName = ?, email = ?, phoneNumber = ? where id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -93,7 +93,7 @@ public class UserService extends DataBaseConnector implements UserDAO {
 
     @Override
     public void remove(User user) {
-        query = "delete from users where id = ?";
+        query = "delete from mono.users where id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

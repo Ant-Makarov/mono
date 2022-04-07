@@ -15,7 +15,7 @@ public class PostOfficeService extends DataBaseConnector implements PostOfficeDA
 
     @Override
     public void add(PostOffice postOffice) {
-        query = "insert into post_offices values(?, ?)";
+        query = "insert into mono.post_offices values(?, ?)";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -31,7 +31,7 @@ public class PostOfficeService extends DataBaseConnector implements PostOfficeDA
     @Override
     public List<PostOffice> getAll() {
         List<PostOffice> postOfficesList = new ArrayList<>();
-        query = "select * from post_offices";
+        query = "select * from mono.post_offices";
 
         try (Connection connection = getConnection();
              Statement statement = connection.createStatement();
@@ -52,7 +52,7 @@ public class PostOfficeService extends DataBaseConnector implements PostOfficeDA
 
     @Override
     public PostOffice getById(Long postOfficeId) {
-        query = "select * from post_offices where post_office_id = ?";
+        query = "select * from mono.post_offices where post_office_id = ?";
         PostOffice postOffice = new PostOffice();
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -70,7 +70,7 @@ public class PostOfficeService extends DataBaseConnector implements PostOfficeDA
 
     @Override
     public void update(PostOffice postOffice) {
-        query = "update postOffices set description = ? where post_office_id = ?";
+        query = "update mono.post_offices set description = ? where post_office_id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -85,7 +85,7 @@ public class PostOfficeService extends DataBaseConnector implements PostOfficeDA
 
     @Override
     public void remove(PostOffice postOffice) {
-        query = "delete from post_offices where id = ?";
+        query = "delete from mono.post_offices where id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

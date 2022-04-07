@@ -3,7 +3,7 @@ package entities;
 public class Notification {
 
     private Long sendID;
-    private String status;
+    private volatile String status;
     private String text;
 
     public Notification() {}
@@ -35,5 +35,14 @@ public class Notification {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "sendID=" + sendID +
+                ", status='" + status + '\'' +
+                ", text='" + text + '\'' +
+                '}';
     }
 }

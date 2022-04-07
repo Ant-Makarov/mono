@@ -92,12 +92,14 @@ public class ParcelSend {
             for (int i = 0; i < 5; i++) {
                 Thread.currentThread().sleep(1000);
                 scheduler.setDecision();
+                if (scheduler.getDecision()) {
+                    this.sendStatus = "Delivered";
+                    break;
+                }
             }
-            if (scheduler.getDecision()) {
-                this.sendStatus = "Delivered";
-            } else {
-                this.sendStatus = "Expired";
-            }
+                if(!scheduler.getDecision()) {
+                        this.sendStatus = "Expired";
+                }
         } catch(InterruptedException e) {
             e.printStackTrace();
         }
@@ -118,20 +120,34 @@ public class ParcelSend {
         this.changeDate = changeDate;
     }
 
+    @Override
+    public String toString() {
+        return "ParcelSend{" +
+                "parcelSendID=" + parcelSendID +
+                ", senderID=" + senderID +
+                ", senderPostOffice=" + senderPostOffice +
+                ", receiverPostOffice=" + receiverPostOffice +
+                ", receiverPhoneNumber='" + receiverPhoneNumber + '\'' +
+                ", receiverFullName='" + receiverFullName + '\'' +
+                ", sendStatus='" + sendStatus + '\'' +
+                ", creationDate=" + creationDate +
+                ", changeDate=" + changeDate +
+                '}';
+    }
+
     public static class Scheduler {
         private Boolean decision = false;
 
-        private boolean setDecision() {
+        private void setDecision() {
             int a = 1;
             int b = 6;
             int result = a + (int) (Math.random() * b);
             if (result == 1) {
-                decision = true;
+                this.decision = true;
             }
-            return decision;
         }
 
-        public Boolean getDecision() {
+        private Boolean getDecision() {
             return decision;
         }
     }
