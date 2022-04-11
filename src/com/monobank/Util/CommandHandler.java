@@ -23,10 +23,8 @@ public class CommandHandler {
                registration(el);
             } else if(s.equals(CREATE_POST_OFFICE)) {
                 postOfficeCreating(el);
-                FileHandler.outputWriter("The new post office has been successfully created and added to database!");
             } else if(s.equals(CREATE_PARCEL_SEND)) {
                 parcelSendCreating(el);
-                FileHandler.outputWriter("The new parcel send has been successfully created and added to database!");
             } else {
                 throw new IllegalArgumentException();
             }
@@ -58,12 +56,12 @@ public class CommandHandler {
         String receiverFullName = el[6];
         ParcelSend parcelSend = new ParcelSend(parcelSendID,senderID,senderPostOfficeID,receiverPostOfficeID,
                 receiverPhoneNumber, receiverFullName);
-
         FileHandler.outputWriter(parcelSend.toString() + " has been successfully created!");
+
         SendParcelService sendParcelService = new SendParcelService();
         sendParcelService.add(parcelSend);
-
         FileHandler.outputWriter("The new parcel has been successfully added to database!");
+
         Notification notification = notificationCreating(parcelSend);
         parcelSend.setSendStatus();
         parcelSend.setChangeDate(new Timestamp(System.currentTimeMillis()));
@@ -84,7 +82,7 @@ public class CommandHandler {
         if (parcelSend.getSendStatus().equals("Delivered")) {
             notification.setText("Your parcel has been successfully delivered!");
         } else {
-            notification.setText("Your parcel hasn't been delivered!");
+            notification.setText("The recepient did not pick up the parcel! :(");
         }
         SERVICE.update(notification);
         FileHandler.outputWriter(notification.toString() + " has been successfully updated!");
